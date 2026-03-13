@@ -1,7 +1,7 @@
 # 🎨 JR Canvas | Figma-Style Design Editor
 
 <p align="center">
-  <img src="./assets/jrcanvas-preview.png" width="900"/>
+  <img src="./public/assets/jrcanvas-preview.png" width="900"/>
 </p>
 
 <p align="center">
