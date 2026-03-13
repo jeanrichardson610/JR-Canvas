@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="./assets/demo.gif" width="900"/>
+  <img src="./public/assets/demo.gif" width="900"/>
 </p>
 
 JR Canvas is a **Figma-style design editor built with React + Vite + TypeScript** featuring an infinite canvas, drawing tools, layers, assets, prototype connections, and full responsive interaction support for desktop, tablet, and mobile devices.
@@ -24,7 +24,7 @@ This project focuses on building a **real canvas engine**, not just UI — inclu
 
 ## 🚀 Live Demo
 
-https://your-demo-link-here
+[JR Canvas](https://jr-canvas.vercel.app/)
 
 ---
 
