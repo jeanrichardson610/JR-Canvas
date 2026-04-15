@@ -584,10 +584,41 @@ style={{
                 }
               }}
               onDragMove={(dx, dy) => {
-                const current = useStore.getState().getCurrentPage().objects[id];
-                if (!current || current.locked) return;
-                updateObject(id, { x: current.x + dx / zoomRef.current, y: current.y + dy / zoomRef.current });
-              }}
+  const store = useStore.getState();
+  const page = store.getCurrentPage();
+
+  const obj = page.objects[id];
+  if (!obj || obj.locked) return;
+
+  const deltaX = dx / zoomRef.current;
+  const deltaY = dy / zoomRef.current;
+
+  // 🧠 if object is part of a group, move ALL siblings
+  if (obj.parentId) {
+    const groupId = obj.parentId;
+
+    const group = page.objects[groupId];
+    if (!group || group.type !== 'group') return;
+
+    (group.children as string[]).forEach((childId) => {
+      const child = page.objects[childId];
+      if (!child || child.locked) return;
+
+      store.updateObject(childId, {
+        x: child.x + deltaX,
+        y: child.y + deltaY,
+      });
+    });
+
+    return;
+  }
+
+  // normal single object move
+  store.updateObject(id, {
+    x: obj.x + deltaX,
+    y: obj.y + deltaY,
+  });
+}}
               onDoubleClick={() => {
                 if (obj.type === 'text') {
                   setSelectedIds([id]);

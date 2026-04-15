@@ -298,8 +298,7 @@ export const useStore = create<AppState>()(
             blendMode: 'normal',
             children: ids,
           } as CanvasObject;
-          const newOrder = p.objectOrder.filter((id) => !ids.includes(id));
-          newOrder.push(groupId);
+          const newOrder = [...p.objectOrder, groupId];
           return { ...p, objects: updatedObjs, objectOrder: newOrder };
         });
         return { pages, selectedIds: [groupId] };
