@@ -529,10 +529,14 @@ window.removeEventListener('pointercancel', onMouseUp);
     );
   };
 
+  const theme = useStore((s) => s.theme);
+  const canvasBg =
+  theme === 'dark' ? 'bg-[#1e1e1e]' : 'bg-white';
+
   return (
     <div
       ref={canvasRef}
-      className={cn('absolute inset-0 overflow-hidden bg-[#1e1e1e]', getCursorClass())}
+      className={cn('absolute inset-0 overflow-hidden', canvasBg, getCursorClass())}
       onPointerDown={(e) => {
   handleMouseDown(e as unknown as React.MouseEvent);
 }}
